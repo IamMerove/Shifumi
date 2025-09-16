@@ -13,16 +13,23 @@ def initialisation_variable():
 
 #fonction pour vérifier qui a gagné
 def check_winner(user,bot,score_user,score_bot):
+    rules = {
+        "pierre": "ciseaux",
+        "feuille": "pierre",
+        "ciseaux": "feuille"
+    }
     if user == bot:
         print("Egalité")
 
     # Cas bot winner
-    if (user == "pierre" and bot == "feuille") or ( user == "ciseaux" and bot == "pierre") or (user =="feuille" and bot=="ciseaux"):
+    # elif (user == "pierre" and bot == "feuille") or ( user == "ciseaux" and bot == "pierre") or (user =="feuille" and bot=="ciseaux"):
+    elif rules[bot] == user:
         print("Vous avez perdu")
         score_bot += 1
 
     # Cas user winner
-    if (user == "feuille" and bot == "pierre") or (user == "pierre" and bot == "ciseaux") or (user =="ciseaux" and bot=="feuille"):
+    # if (user == "feuille" and bot == "pierre") or (user == "pierre" and bot == "ciseaux") or (user =="ciseaux" and bot=="feuille"):
+    elif rules[user] == bot:
         print("Vous avez gagné")
         score_user += 1
     return score_bot,score_user
